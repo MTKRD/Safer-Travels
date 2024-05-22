@@ -16,7 +16,8 @@
 
 
 ## Visuals
-<!-- ![Screenshot](link to SS / path) -->
+<!-- ![Screenshot1](link to SS / path) -->
+<!-- ![Screenshot2](link to SS / path) -->
 
 
 ## Usage
