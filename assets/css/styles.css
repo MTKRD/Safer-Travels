@@ -1,5 +1,32 @@
 header {
-    background-color: rgb(167, 255, 167);
+    background-color: red;
+    position: relative;
+    text-align: center;
+    border: 2px solid red;
+    border-radius: 10px;
+    padding: 10px;
+} 
+body, header {
+    margin: 0px;
+    padding: 0px;
+}
+body {
+    background-color: rgb(197, 193, 193);
+}
+h1{
+    color: whitesmoke;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-
+h2{
+    color: whitesmoke;
+    font-family: Georgia, 'Times New Roman', Times, serif;   
+}
+label {
+    color: blue;
+    font-size: large;
+}
+#submit {
+    background-color: green;
+    color: whitesmoke;
+}
