@@ -3,16 +3,13 @@ header {
     position: relative;
     text-align: center;
     border: 2px solid red;
-    border-radius: 10px;
-    padding: 10px;
+   
 } 
-body, header {
+body {
     margin: 0px;
     padding: 0px;
 }
-body {
-    background-color: rgb(197, 193, 193);
-}
+
 h1{
     color: whitesmoke;
     font-family: Georgia, 'Times New Roman', Times, serif;
@@ -23,7 +20,7 @@ h2{
     font-family: Georgia, 'Times New Roman', Times, serif;   
 }
 label {
-    color: blue;
+    color: black;
     font-size: large;
 }
 #submit {
