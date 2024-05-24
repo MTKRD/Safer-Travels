@@ -9,6 +9,13 @@ body {
     margin: 0px;
     padding: 0px;
 }
+footer{
+    background-color: rgb(102, 79, 79);
+    position: relative;
+    text-align: center;
+    border: 2px solid black;
+   
+} 
 
 h1{
     color: whitesmoke;
