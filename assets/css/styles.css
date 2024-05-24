@@ -4,9 +4,10 @@ header {
   text-align: center;
   border: 5px dashed black;
 }
-h1, h2 {
-    color: rgb(0, 0, 0);
-    font-family: Georgia, "Times New Roman", Times, serif;
+h1,
+h2 {
+  color: rgb(0, 0, 0);
+  font-family: Georgia, "Times New Roman", Times, serif;
 }
 .first-box {
   border-bottom: 5px dashed black;
@@ -32,7 +33,6 @@ input {
 .first-box {
   background-color: yellow;
   color: black;
-
 }
 
 label {
