@@ -1,5 +1,49 @@
 header {
-    background-color: rgb(167, 255, 167);
+    background-color: red;
+    position: relative;
+    text-align: center;
+    border: 2px solid red;
+   
+} 
+body {
+    margin: 0px;
+    padding: 0px;
+}
+footer{
+    background-color: rgb(102, 79, 79);
+    position: relative;
+    text-align: center;
+    border: 2px solid black;
+   
+} 
+
+h1{
+    color: whitesmoke;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
+h2{
+    color: whitesmoke;
+    font-family: Georgia, 'Times New Roman', Times, serif;   
+}
+label {
+    color: black;
+    font-size: large;
+}
+#submit {
+    background-color: green;
+    color: whitesmoke;
+}
 
+#main-weather{
+   
+    height: 400px;
+}
+.img-weather{
+    position: relative;
+    top: 50px;
+    left:40px;
+    height: 100px;
+    width: 100px;
+    border-radius: 50px;
+}
