@@ -30,14 +30,14 @@
         info
       </h2>
     </header>
-    <div class="row h-100 m-1 bg-info gap-4">
+    <div class=" first-box row h-100">
       <div class="d-flex justify-content-end align-itmes-center">
-        <div class="col-3 max-w-25 bg-info d-flex justify-content-end">
+        <div class="today-weather col-3 max-w-25  d-flex justify-content-end">
           <h3 class="m-4">Today's weather</h3>
           <img class="col-3" id="img-main" src="./assets/images/weather.jpg" />
         </div>
       </div>
-      <div class="col-3 bg-info">
+      <div class=" info-box col-3 ">
         <div class="col-6 textbox" id="startingpoint">
           <label for="startingpoint">Enter address</label>
           <input type="text" />
@@ -46,8 +46,12 @@
           <label for="endpoint">Enter destination</label>
           <input type="text" />
         </div>
-        <div class="col-6 textbox" id="zip-city">
-          <label for="zip-code">Enter city or zip code</label>
+        <div class="col-6 textbox" id="state">
+          <label for="state">Enter state</label>
+          <input type="text">
+        </div>
+        <div class="col-6 textbox" id="city">
+          <label for="city">Enter city</label>
           <input type="text" />
         </div>
         <div class="col-2">
@@ -58,7 +62,7 @@
     
     
 <!-- Weather Html -->
-<div id="main-weather"  class="row m-4 justify-content-center bg-dark">
+<div id="main-weather"  class="row justify-content-center">
   <div class="col-2 p-3 m-3 vh-25 bg-danger">
     <h3>5/22/2024</h3>
     <h4>Rainy</h4>
