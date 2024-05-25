@@ -32,7 +32,6 @@ submit.addEventListener("click", function () {
       tdyIcon.setAttribute("src",`${data.forecast.forecastday[0].day.condition.icon}`);
       tdyMainDiv.append(tdyIcon);
 
-
       const tdyTemp = document.createElement("h4");
       tdyTemp.textContent = `91 F`;
       tdyMainDiv.append(tdyTemp);
@@ -45,9 +44,42 @@ submit.addEventListener("click", function () {
       sunset.textContent = `Sunset: ${ data.forecast.forecastday[0].astro.sunset}`;
       tdyMainDiv.append(sunset);
     
-
-
       
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
       for (let i = 1; i <8; i++) {
         const dailyDiv = document.createElement("div");
         dailyDiv.setAttribute("class", " col-2 p-3 m-3 vh-25 bg-danger rounded");
@@ -63,7 +95,7 @@ submit.addEventListener("click", function () {
 
         const w_condition = document.createElement("h4");
         w_condition.textContent =   data.forecast.forecastday[i].day.condition.text;
-     dailyDiv.append(w_condition);
+        dailyDiv.append(w_condition);
 
         const icon = document.createElement("img");
         icon.setAttribute("class", "img-weather");
@@ -73,4 +105,8 @@ submit.addEventListener("click", function () {
           dailyDiv.append(icon);
       }
     });
+
 });
+
+});
+
