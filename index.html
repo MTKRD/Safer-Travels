@@ -23,46 +23,75 @@
 
   <body class="bg-light">
     <!-- Header section -->
-    <header>
+    <header class="h-25 row">
       <h1>Safer Travels</h1>
       <h2>
         Getting you places qicker and safer with up to date weather and traffic
         info
       </h2>
     </header>
-    <div class=" first-box row h-100">
-      <div class="d-flex justify-content-end align-itmes-center">
+  
+      <!-- <div class="d-flex justify-content-end align-itmes-center bg-info">
         <div class="today-weather col-3 max-w-25  d-flex justify-content-end">
           <h3 class="m-4">Today's weather</h3>
           <img class="col-3" id="img-main" src="./assets/images/weather.jpg" />
         </div>
+      </div> -->
+      <div class="row justify-content-around ">
+      <div class="input col-2 bg-danger p-3 m-3">
+    
+      <label  for="startingpoint">Local address</label><br>
+      <input class="form-control" type="text" id="local" />
+  
+      <label for="endpoint">Destination</label>
+      <input class="form-control" type="text" id="destination"/>
+ 
+      <label for="state">State Destination</label>
+      <input class="form-control" type="text" id="state">
+
+      <label for="city">Enter city</label>
+      <input class="form-control" type="text" id="city" />  
+   
+        <button id="submit" class="submit form-control" type="submit">Submit</button>
       </div>
-      <div class=" info-box col-3 ">
-        <div class="col-6 textbox" id="startingpoint">
-          <label for="startingpoint">Enter address</label>
-          <input type="text" />
-        </div>
-        <div class="col-6 textbox" id="endpoint">
-          <label for="endpoint">Enter destination</label>
-          <input type="text" />
-        </div>
-        <div class="col-6 textbox" id="state">
-          <label for="state">Enter state</label>
-          <input type="text">
-        </div>
-        <div class="col-6 textbox" id="city">
-          <label for="city">Enter city</label>
-          <input type="text" />
-        </div>
-        <div class="col-2">
-          <button id="submit" class="submit" type="submit">Submit</button>
-        </div>
+
+     
+
+      <div class="col-9  bg-warning m-3 p-3">
+        <div class="tdyDiv row justify-content-end ">
+          <div class="col-3 bg-info m-3 p-3">
+            <h4>Time to Distination</h4>
+          </div>
+
+
+
+        <!-- <div class="col-3 ps-4">
+          <h3>Now Orlando<h3>
+              <img class="img-weather" src="./assets/images/clearsky.jpg">
+          <h3>Temp: 70</3>
+            <h3>Sunrise</h3>
+            <h3>Sunset</h3>
+        </div> -->
+        
+         <div class="col-2 pt-5 bg-info">
+          <h6>Air quality </h6>
+          <h6>Humidity    </h6>
+          <h6>Wind </h6>
+          <h6>Air quality </h6>
+         </div>
+
       </div>
-    </div>
+      </div>
+       
+      </div>
+
+      
+   
     
     
 <!-- Weather Html -->
-<div id="main-weather"  class="row justify-content-center">
+
+<div id="main-weather"  class="row m-3 vh-100 d-flex justify-content-center">
   <!-- <div class="col-2 p-3 m-3 vh-25 bg-danger">
     <h3>5/22/2024</h3>
     <h4>Rainy</h4>
@@ -108,6 +137,7 @@
     ></script>
     <script src="./assets/javascript/script.js"></script>
     <script src="./assets/javascript/weather.js"></script>
+
     <footer>
       <h6>MTKRD Weather and Traffic &copy 2024</h6>
       <h6>
