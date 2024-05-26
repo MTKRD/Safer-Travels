@@ -2,6 +2,7 @@ const submit = document.querySelector("#submit");
 const superDiv = document.querySelector(".containerDiv");
 const weatherDiv = document.querySelector("#main-weather");
 const tdyWeather = document.querySelector(".tdyDiv");
+const tdyAir = document.querySelector(".airDiv")
 const APIKEY = "082d3b4ac7534762a9a13640242405";
 const city = "Orlando";
 const countryCode = "USA";
@@ -43,7 +44,32 @@ submit.addEventListener("click", function () {
       const sunset = document.createElement("h4");
       sunset.textContent = `Sunset: ${ data.forecast.forecastday[0].astro.sunset}`;
       tdyMainDiv.append(sunset);
-    
+      
+      const uv =document.createElement("h5");
+      uv.textContent=`UV: ${data.forecast.forecastday[0].day.uv}`;
+      tdyAir.append(uv);
+      let light = data.forecast.forecastday[0].day.uv
+      if (light >=0 && light <= 4) {
+        uv.style.color = 'green'
+        console.log("UV is good")
+      } else if (light >=5 && light <= 7){
+        uv.style.color = 'orange'
+        console.log("UV is high")
+      } else if (light >= 8){
+        uv.style.color = 'red'
+        console.log("UV is extreme")
+      } else {
+        uv.style.color ='black'
+        console.log("Indvalid UV valu")
+      }
+
+      const humidity = document.createElement("h5")
+      humidity.textContent = `Humidity: ${data.forecast.forecastday[0].day.avghumidity}%`
+      tdyAir.append(humidity)
+
+      const wind = document.createElement("h5")
+      wind.textContent = `Wind: ${data.forecast.forecastday[0].day.maxwind_mph}`
+      tdyAir.append(wind)
       
     
     
@@ -108,5 +134,4 @@ submit.addEventListener("click", function () {
 
 });
 
-});
 
