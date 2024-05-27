@@ -21,22 +21,24 @@ submit.addEventListener("click", function () {
 
 
       const tdyMainDiv= document.createElement("div");
-      tdyMainDiv.setAttribute("class","col-3 ps-4");
+      tdyMainDiv.setAttribute("class","col-3 ps-4 ");
       tdyWeather.append(tdyMainDiv);
 
       const citName = document.createElement("h3");
+      citName.setAttribute("class","bi bi-geo-alt-fill")
       citName.textContent = `Now in ${data.location.name}`;
       tdyMainDiv.append(citName);
-      
-      const tdyIcon = document.createElement("img");
-      tdyIcon.setAttribute("class","img-weather");
-      tdyIcon.setAttribute("src",`${data.forecast.forecastday[0].day.condition.icon}`);
-      tdyMainDiv.append(tdyIcon);
 
       const tdyTemp = document.createElement("h4");
       tdyTemp.textContent = `91 F`;
       tdyMainDiv.append(tdyTemp);
 
+      const tdyIcon = document.createElement("img");
+      tdyIcon.setAttribute("class","img-weather");
+      tdyIcon.setAttribute("src",`https:${data.forecast.forecastday[0].day.condition.icon}`);
+      tdyMainDiv.append(tdyIcon);
+
+      
       const sunrise = document.createElement("h4");
       sunrise.textContent = `Sunrise: ${ data.forecast.forecastday[0].astro.sunrise}`;
       tdyMainDiv.append(sunrise);
@@ -108,26 +110,32 @@ submit.addEventListener("click", function () {
     
       for (let i = 1; i <8; i++) {
         const dailyDiv = document.createElement("div");
-        dailyDiv.setAttribute("class", " col-2 p-3 m-3 vh-25 bg-danger rounded");
+        dailyDiv.setAttribute("class", " daily   m-3  py-5   rounded-circle");
+      dailyDiv.setAttribute(
+          "style",
+          `background-image: https:${data.forecast.forecastday[i].day.condition.icon}`);
         weatherDiv.append(dailyDiv);
 
-        const dateHeader = document.createElement("h3");
-        dateHeader.textContent = data.forecast.forecastday[i].date;
+        const dateHeader = document.createElement("h6");
+      
+        let date = dayjs(`${data.forecast.forecastday[i].date}`).format("ddd, DD")
+        dateHeader.textContent = date;
         dailyDiv.append(dateHeader);
 
-        const temp = document.createElement("h4");
-        temp.textContent = data.forecast.forecastday[i].day.maxtemp_f;
+        const temp = document.createElement("h6");
+        temp.textContent = `${data.forecast.forecastday[i].day.maxtemp_f} °F`;
         dailyDiv.append(temp);
 
-        const w_condition = document.createElement("h4");
+        const w_condition = document.createElement("h6");
         w_condition.textContent =   data.forecast.forecastday[i].day.condition.text;
+        console.log(data.forecast.forecastday[i].day.condition.icon)
         dailyDiv.append(w_condition);
 
         const icon = document.createElement("img");
         icon.setAttribute("class", "img-weather");
         icon.setAttribute(
           "src",
-          `${data.forecast.forecastday[i].day.condition.icon}`);
+          `https:${data.forecast.forecastday[i].day.condition.icon}`);
           dailyDiv.append(icon);
       }
     });

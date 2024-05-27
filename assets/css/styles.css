@@ -72,5 +72,13 @@ label {
   left: 40px; */
   height: 100px;
   width: 100px;
+  /* padding-left: 40px; */
   border-radius: 50px;
+  text-align: center;
+}
+.daily{
+  text-align: center;
+
+  width: 200px;
+  height: 200px;
 }
