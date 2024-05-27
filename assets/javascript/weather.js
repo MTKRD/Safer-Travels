@@ -33,9 +33,19 @@ submit.addEventListener("click", function () {
       tdyIcon.setAttribute("src",`${data.forecast.forecastday[0].day.condition.icon}`);
       tdyMainDiv.append(tdyIcon);
 
-      const tdyTemp = document.createElement("h4");
-      tdyTemp.textContent = `91 F`;
-      tdyMainDiv.append(tdyTemp);
+      // const tdyTemp = document.createElement("h4");
+      // tdyTemp.textContent = `Temp ${data.forecast.forecastday[0].hour.temp_f}`;
+      // tdyMainDiv.append(tdyTemp);
+
+      const currentHour = new Date().getHours()
+      const currentHourTemperature = data.forecast.forecastday[0].hour.find(hour => {
+        return new Date(hour.time).getHours() === currentHour;
+      }).temp_f;
+
+      const currentHourTemp = document.createElement("h4");
+      currentHourTemp.textContent = `Current Temp ${currentHourTemperature}F`
+      tdyMainDiv.append(currentHourTemp)
+
 
       const sunrise = document.createElement("h4");
       sunrise.textContent = `Sunrise: ${ data.forecast.forecastday[0].astro.sunrise}`;
