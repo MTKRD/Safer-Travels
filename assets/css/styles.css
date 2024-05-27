@@ -63,14 +63,32 @@ label {
 
 #main-weather {
   height: 400px;
-  background-color: green;
   border-bottom: 5px dashed black;
+  padding-top: 25px;
 }
 .img-weather {
-  /* position: relative;
-  top: 50px;
-  left: 40px; */
+
   height: 100px;
   width: 100px;
+
   border-radius: 50px;
+  text-align: center;
+}
+.tdyDiv{
+  text-align: center;
+  /* border : 2px solid white; */
+  border-radius: 20px;
+  /* box-shadow: 6px -6px 6px lightblue; */
+  /* background-color: rgb(61, 54, 54); */
+  color: black;
+
+}
+.daily{
+  text-align: center;
+  border : 2px solid white;
+  box-shadow: 3px 3px  2px 2px rgb(110, 113, 114);
+  background-color: rgb(100, 97, 97);
+  color: white;
+  width: 170px;
+  height: 230px;
 }
