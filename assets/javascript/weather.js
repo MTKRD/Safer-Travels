@@ -1,4 +1,5 @@
 const submit = document.querySelector("#submit");
+const todyTempDiv = document.querySelector(".temp")
 const superDiv = document.querySelector(".containerDiv");
 const weatherDiv = document.querySelector("#main-weather");
 const tdyWeather = document.querySelector(".tdyDiv");
@@ -7,6 +8,7 @@ const APIKEY = "082d3b4ac7534762a9a13640242405";
 const city = "Orlando";
 const countryCode = "USA";
 const state = "FL";
+
 // const apiUrl =`https://api.openweathermap.org/data/2.5/forecast?q=${city},${state},${countryCode}&appid=appid=${APIKEY}&units=imperial`;
 const url = `https://api.weatherapi.com/v1/forecast.json?key=${APIKEY}&q=London&days=8&aqi=yes&alerts=yes`;
 
@@ -20,17 +22,19 @@ submit.addEventListener("click", function () {
       console.log(data);
 
 
+    
       const tdyMainDiv= document.createElement("div");
-      tdyMainDiv.setAttribute("class","col-3 ps-4 ");
+      tdyMainDiv.setAttribute("class"," col-2 pt-5 ps-4 ");
       tdyWeather.append(tdyMainDiv);
 
-      const citName = document.createElement("h3");
-      citName.setAttribute("class","bi bi-geo-alt-fill")
-      citName.textContent = `Now in ${data.location.name}`;
+     
+
+      const citName = document.createElement("h5");
+      citName.textContent = `${data.location.name}`;
       tdyMainDiv.append(citName);
 
-      const tdyTemp = document.createElement("h4");
-      tdyTemp.textContent = `91 F`;
+      const tdyTemp = document.createElement("h5");
+      tdyTemp.textContent = `${data.forecast.forecastday[0].day.maxtemp_f} °F`;
       tdyMainDiv.append(tdyTemp);
 
       const tdyIcon = document.createElement("img");
@@ -39,15 +43,18 @@ submit.addEventListener("click", function () {
       tdyMainDiv.append(tdyIcon);
 
       
-      const sunrise = document.createElement("h4");
+      const sunrise = document.createElement("h6");
       sunrise.textContent = `Sunrise: ${ data.forecast.forecastday[0].astro.sunrise}`;
       tdyMainDiv.append(sunrise);
 
-      const sunset = document.createElement("h4");
+      const sunset = document.createElement("h6");
       sunset.textContent = `Sunset: ${ data.forecast.forecastday[0].astro.sunset}`;
       tdyMainDiv.append(sunset);
       
-      const uv =document.createElement("h5");
+     const  tdyAir = document.createElement("div");
+      tdyAir.setAttribute("class", "airDiv col-2 pt-5 ");
+      tdyWeather.append(tdyAir)
+      const uv =document.createElement("h6");
       uv.textContent=`UV: ${data.forecast.forecastday[0].day.uv}`;
       tdyAir.append(uv);
       let light = data.forecast.forecastday[0].day.uv
@@ -65,11 +72,11 @@ submit.addEventListener("click", function () {
         console.log("Indvalid UV valu")
       }
 
-      const humidity = document.createElement("h5")
+      const humidity = document.createElement("h6")
       humidity.textContent = `Humidity: ${data.forecast.forecastday[0].day.avghumidity}%`
       tdyAir.append(humidity)
 
-      const wind = document.createElement("h5")
+      const wind = document.createElement("h6")
       wind.textContent = `Wind: ${data.forecast.forecastday[0].day.maxwind_mph}`
       tdyAir.append(wind)
       
@@ -110,7 +117,7 @@ submit.addEventListener("click", function () {
     
       for (let i = 1; i <8; i++) {
         const dailyDiv = document.createElement("div");
-        dailyDiv.setAttribute("class", " daily   m-3  py-5   rounded-circle");
+        dailyDiv.setAttribute("class", " daily pt-4  m-3 rounded-circle");
       dailyDiv.setAttribute(
           "style",
           `background-image: https:${data.forecast.forecastday[i].day.condition.icon}`);
