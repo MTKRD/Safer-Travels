@@ -3,11 +3,10 @@ margin:20px
 }
 
 header {
-  background-color: red;
   position: relative;
   text-align: center;
-  border: 5px dashed black;
 }
+
 h1,
 h2 {
   color: rgb(0, 0, 0);
