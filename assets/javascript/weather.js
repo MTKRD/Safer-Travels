@@ -44,9 +44,9 @@ submit.addEventListener("click", function () {
       citName.textContent = `${data.location.name}`;
       tdyMainDiv.append(citName);
 
-      const tdyTemp = document.createElement("h5");
-      tdyTemp.textContent = `${data.forecast.forecastday[0].day.maxtemp_f} °F`;
-      tdyMainDiv.append(tdyTemp);
+      // const tdyTemp = document.createElement("h5");
+      // tdyTemp.textContent = `${data.forecast.forecastday[0].day.maxtemp_f} °F`;
+      // tdyMainDiv.append(tdyTemp);
 
       const tdyIcon = document.createElement("img");
       tdyIcon.setAttribute("class","img-weather");
@@ -80,7 +80,7 @@ submit.addEventListener("click", function () {
         console.log("UV is extreme")
       } else {
         uv.style.color ='black'
-        console.log("Indvalid UV valu")
+        console.log("Indvalid UV value")
       }
 
       const humidity = document.createElement("h6")
@@ -88,7 +88,7 @@ submit.addEventListener("click", function () {
       tdyAir.append(humidity)
 
       const wind = document.createElement("h6")
-      wind.textContent = `Wind: ${data.forecast.forecastday[0].day.maxwind_mph}`
+      wind.textContent = `Wind: ${data.forecast.forecastday[0].day.maxwind_mph} mph`
       tdyAir.append(wind)
       
     
