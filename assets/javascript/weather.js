@@ -10,7 +10,7 @@ const inputCity = document.querySelector("#city");
 
 const countryCode = "USA";
 const state = "FL";
-const APIKEY = "082d3b4ac7534762a9a13640242405";+
+const APIKEY = "082d3b4ac7534762a9a13640242405";
 const localAdd = document.getElementById('local').value;
 const destination = document.getElementById('destination').value;
 const stateWea = document.getElementById('state').value;
@@ -160,5 +160,3 @@ submit.addEventListener("click", function () {
     });
 
 });
-
-
