@@ -1,4 +1,4 @@
-# Project1
+# MTKRD Weather And Traffic
 
 # Description
 
@@ -27,4 +27,4 @@
 
 ## License
 
-<!-- [MIT](https://choosealicense.com/licenses/mit/) -->
+[MIT](https://choosealicense.com/licenses/mit/) 

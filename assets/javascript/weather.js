@@ -9,6 +9,7 @@ const inputCity = document.querySelector("#city");
 const countryCode = "USA";
 const state = "FL";
 const APIKEY = "082d3b4ac7534762a9a13640242405";
+
 //add these values to get an alert
 const localAdd = document.getElementById("local").value;
 const destination = document.getElementById("destination").value;
@@ -180,4 +181,8 @@ submit.addEventListener("click", function () {
       console.log(city);
       weather(data);
     });
+
 });
+
+
+
