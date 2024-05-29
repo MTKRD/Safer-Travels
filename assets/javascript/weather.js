@@ -10,13 +10,19 @@ const inputCity = document.querySelector("#city");
 
 const countryCode = "USA";
 const state = "FL";
-const APIKEY = "082d3b4ac7534762a9a13640242405";
+const APIKEY = "082d3b4ac7534762a9a13640242405";+
+const localAdd = document.getElementById('local').value;
+const destination = document.getElementById('destination').value;
+const stateWea = document.getElementById('state').value;
+const cityWea = document.getElementById('city').value;
+
 // const apiUrl =`https://api.openweathermap.org/data/2.5/forecast?q=${city},${state},${countryCode}&appid=appid=${APIKEY}&units=imperial`;
 
 
 // const cit1 = $("#city").val();
 
 console.log(city);
+
 
 
 function todayWeather(data){
@@ -138,6 +144,9 @@ submit.addEventListener("click", function () {
   const url = `https://api.weatherapi.com/v1/forecast.json?key=${APIKEY}&q=${city}&days=8&aqi=yes&alerts=yes`;
 
  
+  if (localAdd.trim()=== "" || destination.trim() === "" || stateWea.trim() === "" || cityWea.trim() === ""){
+    alert('All inputs must be filled out')
+  }
   fetch(url)
     .then(function (response) {
       return response.json();
