@@ -1,0 +1,28 @@
+#search-panel-container {
+    width: auto; /* should i make this the length of the map? */
+}
+
+span {
+    text-decoration: underline;
+    color: #000;
+}
+
+.show-traffic-layers {
+    color: #b2b2b2;
+    font: 700 14px/normal Gotham;
+    font-stretch: normal;
+    height: 16px;
+    letter-spacing: -0.25px;
+    width: 128px;
+}
+
+/* 
+.row-border {
+    background-color: white;
+    border-top: 2px solid #f2f2f2;
+} */
+
+#map {
+    height: 40vh;
+    width: 100%; /* 100% value is best*/
+}
