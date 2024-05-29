@@ -3,8 +3,13 @@ margin:20px
 }
 
 header {
-  position: relative;
+  /* position: relative; */
   text-align: center;
+  background-image: url(/assets/images/header.png);
+background-repeat:repeat;
+  background-size: cover;
+
+
 }
 
 h1,
