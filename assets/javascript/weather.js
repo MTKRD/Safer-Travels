@@ -4,15 +4,24 @@ const superDiv = document.querySelector(".containerDiv");
 const weatherDiv = document.querySelector("#main-weather");
 const tdyWeather = document.querySelector(".tdyDiv");
 const tdyAir = document.querySelector(".airDiv")
-const APIKEY = "082d3b4ac7534762a9a13640242405";
-const city = "Orlando";
+const inputCity = document.querySelector("#city");
+
+
+
 const countryCode = "USA";
 const state = "FL";
-
+const APIKEY = "082d3b4ac7534762a9a13640242405";
 // const apiUrl =`https://api.openweathermap.org/data/2.5/forecast?q=${city},${state},${countryCode}&appid=appid=${APIKEY}&units=imperial`;
-const url = `https://api.weatherapi.com/v1/forecast.json?key=${APIKEY}&q=London&days=8&aqi=yes&alerts=yes`;
+
+
+// const cit1 = $("#city").val();
+
+console.log(city);
+
 
 function todayWeather(data){
+ 
+
   const tdyMainDiv= document.createElement("div");
   tdyMainDiv.setAttribute("class"," col-2 pt-5 ps-4 ");
   tdyWeather.append(tdyMainDiv);
@@ -124,11 +133,10 @@ function weather(data){
 
 
 
-
-
-
-
 submit.addEventListener("click", function () {
+  const city = inputCity.value;
+  const url = `https://api.weatherapi.com/v1/forecast.json?key=${APIKEY}&q=${city}&days=8&aqi=yes&alerts=yes`;
+
  
   fetch(url)
     .then(function (response) {
@@ -136,7 +144,8 @@ submit.addEventListener("click", function () {
     })
     .then(function (data) {
       console.log(data);
-
+      
+      console.log(city);
       weather(data);
 
     });
