@@ -14,7 +14,7 @@ const stateWea = document.getElementById('state').value;
 const cityWea = document.getElementById('city').value;
 
 // const apiUrl =`https://api.openweathermap.org/data/2.5/forecast?q=${city},${state},${countryCode}&appid=appid=${APIKEY}&units=imperial`;
-const url = `https://api.weatherapi.com/v1/forecast.json?key=${APIKEY}&q=London&days=8&aqi=yes&alerts=yes`;
+const url = `https://api.weatherapi.com/v1/forecast.json?key=${APIKEY}&q=Lonon&days=8&aqi=yes&alerts=yes`;
 
 
 function todayWeather(data){
@@ -121,10 +121,7 @@ function initial(){
 function weather(data){
       initial();
       todayWeather(data);
-      weekWeather(data);
-
-    
-    
+      weekWeather(data);  
 }
 
 
@@ -135,12 +132,23 @@ function weather(data){
 
 submit.addEventListener("click", function () {
  
-  if (localAdd.trim()=== "" || destination.trim() === "" || stateWea.trim() === "" || cityWea.trim() === ""){
-    alert('All inputs must be filled out')
-  }
+  // if (localAdd.trim()=== "" || destination.trim() === "" || stateWea.trim() === "" || cityWea.trim() === ""){
+  //   alert('All inputs must be filled out')
+  // }
   fetch(url)
     .then(function (response) {
-      return response.json();
+      if ( response.status !== 200){
+        if(response.status == 500){
+          document.location.replace("assets/pages/500.html");
+        }else{
+
+          console.log("bad request")
+            document.location.replace("assets/pages/error.html");
+        }
+
+      }else{
+        return response.json();
+      }
     })
     .then(function (data) {
       console.log(data);
