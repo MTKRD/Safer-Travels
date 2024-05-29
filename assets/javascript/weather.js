@@ -4,20 +4,30 @@ const superDiv = document.querySelector(".containerDiv");
 const weatherDiv = document.querySelector("#main-weather");
 const tdyWeather = document.querySelector(".tdyDiv");
 const tdyAir = document.querySelector(".airDiv")
-const APIKEY = "082d3b4ac7534762a9a13640242405";
-const city = "Orlando";
+const inputCity = document.querySelector("#city");
+
+
+
 const countryCode = "USA";
 const state = "FL";
+const APIKEY = "082d3b4ac7534762a9a13640242405";
 const localAdd = document.getElementById('local').value;
 const destination = document.getElementById('destination').value;
 const stateWea = document.getElementById('state').value;
 const cityWea = document.getElementById('city').value;
 
 // const apiUrl =`https://api.openweathermap.org/data/2.5/forecast?q=${city},${state},${countryCode}&appid=appid=${APIKEY}&units=imperial`;
-const url = `https://api.weatherapi.com/v1/forecast.json?key=${APIKEY}&q=Lonon&days=8&aqi=yes&alerts=yes`;
+
+
+// const cit1 = $("#city").val();
+
+console.log(city);
+
 
 
 function todayWeather(data){
+ 
+
   const tdyMainDiv= document.createElement("div");
   tdyMainDiv.setAttribute("class"," col-2 pt-5 ps-4 ");
   tdyWeather.append(tdyMainDiv);
@@ -121,42 +131,32 @@ function initial(){
 function weather(data){
       initial();
       todayWeather(data);
-      weekWeather(data);  
+      weekWeather(data);
+
+    
+    
 }
 
 
 
-
-
-
-
 submit.addEventListener("click", function () {
+  const city = inputCity.value;
+  const url = `https://api.weatherapi.com/v1/forecast.json?key=${APIKEY}&q=${city}&days=8&aqi=yes&alerts=yes`;
+
  
-  // if (localAdd.trim()=== "" || destination.trim() === "" || stateWea.trim() === "" || cityWea.trim() === ""){
-  //   alert('All inputs must be filled out')
-  // }
+  if (localAdd.trim()=== "" || destination.trim() === "" || stateWea.trim() === "" || cityWea.trim() === ""){
+    alert('All inputs must be filled out')
+  }
   fetch(url)
     .then(function (response) {
-      if ( response.status !== 200){
-        if(response.status == 500){
-          document.location.replace("assets/pages/500.html");
-        }else{
-
-          console.log("bad request")
-            document.location.replace("assets/pages/error.html");
-        }
-
-      }else{
-        return response.json();
-      }
+      return response.json();
     })
     .then(function (data) {
       console.log(data);
-
+      
+      console.log(city);
       weather(data);
 
     });
 
 });
-
-
