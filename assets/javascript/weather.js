@@ -40,7 +40,7 @@ function todayWeather(data) {
     currentHourTemp.style.color = "blue";
     console.log("cold");
   } else if (degree >= 50 && degree <= 79) {
-    currentHourTemp.style.color = "yellow";
+    currentHourTemp.style.color = "orange";
     console.log("warm");
   } else if (degree >= 80 && degree <= 120) {
     currentHourTemp.style.color ="red"
