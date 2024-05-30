@@ -1,3 +1,4 @@
+// selectors for the elements
 const submit = document.querySelector("#submit");
 const todyTempDiv = document.querySelector(".temp");
 const superDiv = document.querySelector(".containerDiv");
@@ -5,7 +6,8 @@ const weatherDiv = document.querySelector("#main-weather");
 const tdyWeather = document.querySelector(".tdyDiv");
 const tdyAir = document.querySelector(".airDiv");
 const inputCity = document.querySelector("#city");
-
+// const mapInput = document.querySelector(".tt-search-box-input");
+// varaibles 
 const countryCode = "USA";
 const state = "FL";
 const APIKEY = "082d3b4ac7534762a9a13640242405";
@@ -23,6 +25,7 @@ const cityWea = document.getElementById("city").value;
 console.log(city);
 
 function todayWeather(data) {
+  // added div element to hold todays weather 
   const tdyMainDiv = document.createElement("div");
   tdyMainDiv.setAttribute("class", " col-2 pt-5 ps-4 ");
   tdyWeather.append(tdyMainDiv);
@@ -31,7 +34,6 @@ function todayWeather(data) {
   currentHourTemp.textContent = `Current Temp ${data.current.temp_f}°F`;
   tdyMainDiv.append(currentHourTemp);
   let degree = data.current.temp_f;
-  console.log('hello')
 
   if (degree >= 0 && degree <= 49) {
     currentHourTemp.style.color = "blue";
@@ -47,10 +49,12 @@ function todayWeather(data) {
     console.log('death')
   }
 
+   // added the header for city name and append it to the todays weather
   const citName = document.createElement("h5");
   citName.textContent = `${data.location.name}`;
   tdyMainDiv.append(citName);
 
+  // added the img for icon and append it to the todays weather
   const tdyIcon = document.createElement("img");
   tdyIcon.setAttribute("class", "img-weather");
   tdyIcon.setAttribute(
@@ -58,11 +62,12 @@ function todayWeather(data) {
     `https:${data.forecast.forecastday[0].day.condition.icon}`
   );
   tdyMainDiv.append(tdyIcon);
-
+// added the header for sunrise and append it to the todays weather
   const sunrise = document.createElement("h6");
   sunrise.textContent = `Sunrise: ${data.forecast.forecastday[0].astro.sunrise}`;
   tdyMainDiv.append(sunrise);
 
+   // added the header for sunset and append it to the todays weather
   const sunset = document.createElement("h6");
   sunset.textContent = `Sunset: ${data.forecast.forecastday[0].astro.sunset}`;
   tdyMainDiv.append(sunset);
@@ -74,6 +79,7 @@ function todayWeather(data) {
   uv.textContent = `UV: ${data.current.uv}`;
   tdyAir.append(uv);
   let light = data.forecast.forecastday[0].day.uv;
+  // logic to changed the color base on the value of air quality
   if (light >= 0 && light <= 4) {
     uv.style.color = "green";
     console.log("UV is good");
@@ -87,7 +93,7 @@ function todayWeather(data) {
     uv.style.color = "black";
     console.log("Indvalid UV value");
   }
-
+  // added the header for humidity and append it to the todays weather
   const humidity = document.createElement("h5");
   humidity.textContent = `Humidity: ${data.current.humidity}%`;
   tdyAir.append(humidity);
@@ -113,9 +119,12 @@ function todayWeather(data) {
   tdyAir.append(feelLike);
 }
 
+// rendring html and its values 
 function weekWeather(data) {
   for (let i = 1; i < 8; i++) {
+      // main for daily weather
     const dailyDiv = document.createElement("div");
+     // set the classes 
     dailyDiv.setAttribute("class", " daily pt-4  m-3 rounded-circle");
     dailyDiv.setAttribute(
       "style",
@@ -124,20 +133,24 @@ function weekWeather(data) {
     weatherDiv.append(dailyDiv);
 
     const dateHeader = document.createElement("h6");
-
+    
+    // formating the date using dayjs and append it
     let date = dayjs(`${data.forecast.forecastday[i].date}`).format("ddd, DD");
     dateHeader.textContent = date;
     dailyDiv.append(dateHeader);
 
+     // heading for temp
     const temp = document.createElement("h6");
     temp.textContent = `${data.forecast.forecastday[i].day.maxtemp_f} °F`;
     dailyDiv.append(temp);
 
+     // heading for condition and append it to daily div
     const w_condition = document.createElement("h6");
     w_condition.textContent = data.forecast.forecastday[i].day.condition.text;
     console.log(data.forecast.forecastday[i].day.condition.icon);
     dailyDiv.append(w_condition);
 
+     // heading for the icon and append it to daily div
     const icon = document.createElement("img");
     icon.setAttribute("class", "img-weather");
     icon.setAttribute(
@@ -148,33 +161,57 @@ function weekWeather(data) {
   }
 }
 
+// function to initialize the page before displaying data
 function initial() {
   weatherDiv.textContent = "";
   tdyWeather.textContent = "";
 }
 
+// function that calls other function of rendring
 function weather(data) {
   initial();
   todayWeather(data);
   weekWeather(data);
 }
 
-submit.addEventListener("click", function () {
-  const city = inputCity.value;
+searchBoxInstance.on("tomtom.searchbox.resultselected", function(){
+// submit.addEventListener("click", function () {
+  // getting input from users
+
+  console.log('this has been excuted in weather');
+  // const city = inputCity.value;
+  city = localStorage.getItem('city');
+ 
   const url = `https://api.weatherapi.com/v1/forecast.json?key=${APIKEY}&q=${city}&days=8&aqi=yes&alerts=yes`;
-//Thomas started this was made better by Houssine
+  
+ // verifying all inputs have been filled up
+
   if (
     localAdd.trim() === "" ||
     destination.trim() === "" ||
     stateWea.trim() === "" ||
     cityWea.trim() === ""
   ) {
-    alert("All inputs must be filled out");
+
   }
+  // fetch data
   fetch(url)
     .then(function (response) {
-      return response.json();
+      // verify the status of response, if 200 return data if not display the correspondon page
+      // if ( response.status !== 200){
+      //   if(response.status === 500){
+      //     document.location.replace("assets/pages/500.html");
+      //   }else{
+
+      //     console.log("bad request")
+      //       document.location.replace("assets/pages/error.html");
+      //   }
+
+      // }else{
+        return response.json();
+      // }
     })
+    // manuiplate data and call other function with required paramaters and arguments 
     .then(function (data) {
       console.log(data);
 
@@ -183,6 +220,3 @@ submit.addEventListener("click", function () {
     });
 
 });
-
-
-

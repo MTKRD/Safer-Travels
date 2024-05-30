@@ -2,6 +2,7 @@
 //tomtom api with (what should be) an activated key 
 
 // in this part of the code we have our API key and things like how zoomed in it is by default
+const mapInput = document.querySelector(".tt-search-box-input");
 var apiKey = "xfbbhehRbP7NMrCMLosZ8wBT5eZvEgqa";
 var centerCoords = [4.89218, 52.37187];
 var initialZoom = 13;
@@ -64,10 +65,17 @@ function updateSearchBoxOptions() {
  // this piece of the function grabs your final search / result, locates it then the speed number
  // will manipulate how fast the map flys to where you searched.
 function onSearchBoxResult(result) {
+    console.log(result);
     map.flyTo({
         center: result.data.result.position,
         speed: 3
+
     });
+    let city1 =result.data.result.address.municipality;
+    console.log('Iam here');
+    console.log(city1);
+    localStorage.setItem("city",city1)
+  
 }
 
 
@@ -162,7 +170,11 @@ function initApplication() {
         noResultsMessage: "No results found.",
         searchOptions: commonSearchBoxOptions,
         autocompleteOptions: commonSearchBoxOptions
+
+        
     });
+
+    
 
     searchBoxInstance.on("tomtom.searchbox.resultselected", onSearchBoxResult);
 
@@ -173,6 +185,8 @@ function initApplication() {
     map.on("mousemove", onMouseMove);
     map.on("moveend", updateSearchBoxOptions);
     console.log("safe travels!");
+   
+        
 }
 
 initApplication();
