@@ -175,9 +175,17 @@ function weather(data) {
 }
 
 
-submit.addEventListener("click", function () {
+
+
+
+searchBoxInstance.on("tomtom.searchbox.resultselected", function(){
+// submit.addEventListener("click", function () {
   // getting input from users
-  const city = inputCity.value;
+
+  console.log('this has been excuted in weather');
+  // const city = inputCity.value;
+  city = localStorage.getItem('city');
+
  
   const url = `https://api.weatherapi.com/v1/forecast.json?key=${APIKEY}&q=${city}&days=8&aqi=yes&alerts=yes`;
   
@@ -195,6 +203,7 @@ submit.addEventListener("click", function () {
   fetch(url)
     .then(function (response) {
       // verify the status of response, if 200 return data if not display the correspondon page
+
       if ( response.status !== 200){
         if(response.status === 500){
           document.location.replace("assets/pages/500.html");
@@ -207,6 +216,7 @@ submit.addEventListener("click", function () {
       }else{
         return response.json();
       }
+
     })
     // manuiplate data and call other function with required paramaters and arguments 
     .then(function (data) {
