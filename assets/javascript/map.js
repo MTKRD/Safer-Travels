@@ -72,7 +72,7 @@ function onSearchBoxResult(result) {
 
     });
     let city1 =result.data.result.address.municipality;
-    console.log('Iam here');
+    // console.log('Iam here');
     console.log(city1);
     localStorage.setItem("city",city1)
   
