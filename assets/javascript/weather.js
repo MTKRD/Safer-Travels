@@ -6,6 +6,7 @@ const weatherDiv = document.querySelector("#main-weather");
 const tdyWeather = document.querySelector(".tdyDiv");
 const tdyAir = document.querySelector(".airDiv");
 const inputCity = document.querySelector("#city");
+const tdydetail = document.querySelector(".tdy-detail")
 // const mapInput = document.querySelector(".tt-search-box-input");
 // varaibles 
 const countryCode = "USA";
@@ -13,21 +14,21 @@ const state = "FL";
 const APIKEY = "082d3b4ac7534762a9a13640242405";
 
 //add these values to get an alert
-const localAdd = document.getElementById("local").value;
-const destination = document.getElementById("destination").value;
-const stateWea = document.getElementById("state").value;
-const cityWea = document.getElementById("city").value;
+// const localAdd = document.getElementById("local").value;
+// const destination = document.getElementById("destination").value;
+// const stateWea = document.getElementById("state").value;
+// const cityWea = document.getElementById("city").value;
 
 // const apiUrl =`https://api.openweathermap.org/data/2.5/forecast?q=${city},${state},${countryCode}&appid=appid=${APIKEY}&units=imperial`;
 
 // const cit1 = $("#city").val();
 
-console.log(city);
+// console.log(city);
 
 function todayWeather(data) {
   // added div element to hold todays weather 
   const tdyMainDiv = document.createElement("div");
-  tdyMainDiv.setAttribute("class", " col-2 pt-5 ps-4 ");
+  tdyMainDiv.setAttribute("class", " col-8 pt-5 ps-4 ");
   tdyWeather.append(tdyMainDiv);
 //Thomas Smith made the current temp and put color to it when the temp is in cerntain rage 
   const currentHourTemp = document.createElement("h4");
@@ -73,7 +74,7 @@ function todayWeather(data) {
   tdyMainDiv.append(sunset);
 //Thomas Smith add uv with color, the humidiy, wind direction, wind speed, maxTemp, minTemp, and feelsLike
   const tdyAir = document.createElement("div");
-  tdyAir.setAttribute("class", "airDiv col-2 pt-5 ");
+  tdyAir.setAttribute("class", "airDiv col-3 pt-5 ");
   tdyWeather.append(tdyAir);
   const uv = document.createElement("h5");
   uv.textContent = `UV: ${data.current.uv}`;
@@ -191,13 +192,13 @@ searchBoxInstance.on("tomtom.searchbox.resultselected", function(){
   
  // verifying all inputs have been filled up
 
-  if (
-    localAdd.trim() === "" ||
-    destination.trim() === "" ||
-    stateWea.trim() === "" ||
-    cityWea.trim() === ""
-  ) {
-
+  // if (
+  //   localAdd.trim() === "" ||
+  //   destination.trim() === "" ||
+  //   stateWea.trim() === "" ||
+  //   cityWea.trim() === ""
+  // ) {
+{
   }
   // fetch data
   fetch(url)

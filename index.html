@@ -27,52 +27,35 @@
 
   <body class="bg-light">
     <!-- Header section -->
-    <header class="h-25 row">
+    <header class="h-25  shadow">
       <h1>Safer Travels</h1>
       <h2>
         Getting you places qicker and safer with up to date weather and traffic
         info
       </h2>
     </header>
-    <h3>Where are you traveling too?</h3>
-    <div id="search-panel-container" >      
+    
+    <div class="mt-5 p-4" id="search-panel-container" > 
+      <h5>Where are you traveling too?</h3>     
       <div id="search-panel" ></div>
-    </div>
-        <label for="flow-toggle" class="traffic-text">Check what the traffic's like ➜</label>
-        <label class="switch">
-          <input id="flow-toggle" type="checkbox" />
+    
+        <label for="flow-toggle" class="traffic-text pt-3">Check what the traffic's like ➜</label>
+        <label class="switch ">
+          <input id="flow-toggle "  type="checkbox" />
           <span class="toggle round"></span>
         </label>
-<div class="col" id="map"></div>
+        </div>
+<div class="col m-4 shadow-lg" id="map"></div>
 </div>
-      <div class="row justify-content-around ">
-      <div class="input shadow col-3 p-3 m-3">
-    
-      <label  for="startingpoint">Local address</label><br>
-      <input class="form-control shadow" type="text" id="local" />
-  
-      <label for="endpoint">Destination</label>
-      <input class="form-control shadow" type="text" id="destination"/>
- 
-      <label for="state">State Destination</label>
-      <input class="form-control shadow" type="text" id="state">
 
-      <label for="city">Enter city</label>
-      <input id="city" type="text" class="form-control shadow " />  
-  
-        <button id="submit" class="submit form-control" type="submit">Search</button>
+      <div class="row  justify-content-around ">
+      <div class="input shadow col-3 p-3 m-3"></div>
+
+      <div class="col-8 tdyDiv row shadow  m-3 p-3">
+        <!-- <div class="tdyDiv row h-100 bg-info justify-content-end col-8 shadow bg-danger   m-3 p-3 ">
       </div>
-
-      <div class="col-8 shadow   m-3 p-3">
-        <div class="tdyDiv row h-100 justify-content-end ">
-
-          <div class=" trafic col-7 bg-secondary m-3 p-3">
-            <h4>Time to Distination</h4>
-          </div>
-
+      -->
       </div>
-      </div>
-       
       </div>   
 <!-- Weather Html  -->
 
