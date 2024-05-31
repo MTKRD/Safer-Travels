@@ -51,7 +51,7 @@ input {
   color: black;
 }
 
-.input{
+.alert{
   display: block;
   height: 350px;
 }
@@ -96,6 +96,48 @@ label {
   color: white;
   width: 170px;
   height: 230px;
+}
+
+.readMore-div{
+  /* display: none; */
+  justify-content: center;
+  position: absolute;
+  left: 400px;
+  top:600px;
+  width: 60%;
+  background-color: white;
+  border-radius: 25px;
+  box-shadow: 6px 6px;
+  padding:30px;
+  font-size: 20px;
+  z-index: 5;
+}
+
+.hidden{
+  display: none;
+}
+
+#read-more-btn{
+  border:none;
+  color: blue;
+  margin-top: 20px;
+}
+
+#read-more-btn:hover {
+  font-size: 20px;
+}
+
+
+#read-more-closebtn{
+  background-color: white;
+  color: red;
+  border:none;
+  font-size: 30px;
+}
+
+
+#read-more-closebtn:hover {
+  font-size: 40px;
 }
 
 #modall {
@@ -144,3 +186,4 @@ label {
     font-weight: bold;
     text-decoration: underline;
   }
+
