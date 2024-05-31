@@ -176,7 +176,7 @@ function weekWeather(data) {
     // main for daily weather
     const dailyDiv = document.createElement("div");
     // set the classes
-    dailyDiv.setAttribute("class", " daily pt-4  m-3 rounded-circle");
+    dailyDiv.setAttribute("class", " daily pt-4  m-3 rounded");
     dailyDiv.setAttribute(
       "style",
       `background-image: https:${data.forecast.forecastday[i].day.condition.icon}`
