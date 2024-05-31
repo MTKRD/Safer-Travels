@@ -97,3 +97,50 @@ label {
   width: 170px;
   height: 230px;
 }
+
+#modall {
+  margin-left: 20px;
+  margin-right: 20px;
+  background-color: transparent;
+  border: none;
+  color: #000;
+  text-decoration: underline;
+  }
+  /* id above class below */
+  
+  .modal {
+    display: none;
+    position: fixed;
+    /* z-index: 1; */
+    top:50% ;
+    left:50%;
+    transform: translate(-50%, -50%);
+    height: 70%;
+    width: 35%;
+  overflow: auto;
+  background-color: lemonchiffon; 
+   border: 1px solid black;
+  
+  }
+  
+  .modal-content{
+    background-color: white;
+    margin: 1% auto;
+    padding: 20px;
+   width: 75%; /*I might edit this before pushing.  */
+   font-size: small;
+  }
+  
+  .close {
+    color: #aaa;
+    float: right;
+    padding-right: 10px;
+    font-size:30px; /*make sure this isnt too big before pushing.  */
+    font-weight: bold;
+  }
+
+  h4 {
+    color: black;
+    font-weight: bold;
+    text-decoration: underline;
+  }
