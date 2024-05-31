@@ -7,12 +7,24 @@ const tdyWeather = document.querySelector(".tdyDiv");
 const tdyAir = document.querySelector(".airDiv");
 const inputCity = document.querySelector("#city");
 const tdydetail = document.querySelector(".tdy-detail");
+const alertWeather = document.querySelector(".alert");
+const readMoreDiv = document.querySelector(".readMore-div")
+const readMore = document.querySelector("read-more-btn");
+const closeReadMore = document.querySelector("#read-more-closebtn");
 // const mapInput = document.querySelector(".tt-search-box-input");
 // varaibles
 const countryCode = "USA";
 const state = "FL";
 const APIKEY = "082d3b4ac7534762a9a13640242405";
 
+// function to generate the description of the alert
+function readMoreAlert(data){
+
+  const eDescription = document.createElement('p');
+  eDescription.textContent = data.alerts.alert[0].desc;
+  readMoreDiv.append(eDescription);
+
+}
 
 function todayWeather(data) {
   // added div element to hold todays weather
@@ -107,6 +119,55 @@ function todayWeather(data) {
   const feelLike = document.createElement("h5");
   feelLike.textContent = `Feels Like: ${data.current.feelslike_f}°F`;
   tdyAir.append(feelLike);
+
+  let alert = data.alerts.alert.length;
+   console.log(alert);
+   const alertDiv = document.createElement("div");
+    alertDiv.setAttribute("class","py-4 text-center ");
+    alertWeather.append(alertDiv);
+
+   if(alert ===0){
+    const noEvent = document.createElement('h4');
+    noEvent.setAttribute('class',"py-2")
+  noEvent.textContent = "Safe Travel";
+  alertDiv.append(noEvent);
+
+  const noAlert = document.createElement('h4');
+  noAlert.textContent = "There are no alerts reported as of now";
+  alertDiv.append(noAlert);
+
+   }else{
+  
+
+  const event = document.createElement('h4');
+  event.textContent = data.alerts.alert[0].event;
+  alertDiv.append(event);
+
+  let alertDate = dayjs(`${data.alerts.alert[0].effective}`).format(" MMM, DD, 2024 [at]  HH:mm");
+  const eventDate = document.createElement('h5');
+  eventDate.textContent = `Affective: ${alertDate}`;
+  alertDiv.append(eventDate);
+
+  let alertExpires = dayjs(`${data.alerts.alert[0].expires}`).format(" MMM, DD, 2024 [at]  HH:mm");
+  const eventExpire = document.createElement('h5');
+  eventExpire.textContent = `Expires: ${alertExpires}`;
+  alertDiv.append(eventExpire);
+
+  const readMore= document.createElement('button')
+  readMore.setAttribute('id','read-more-btn');
+  readMore.textContent = 'Read more';
+  alertDiv.append(readMore);
+
+
+  readMore.addEventListener("click", function(){
+    readMoreDiv.classList.remove("hidden");
+    readMoreAlert(data);
+   
+  }); 
+
+}
+
+
 }
 
 // rendring html and its values
@@ -155,6 +216,7 @@ function weekWeather(data) {
 function initial() {
   weatherDiv.textContent = "";
   tdyWeather.textContent = "";
+  alertWeather.textContent="";
 }
 
 // function that calls other function of rendring
@@ -164,10 +226,12 @@ function weather(data) {
   weekWeather(data);
 }
 
+// event listner for resultSelected of the map to generate weather using same data
+
 searchBoxInstance.on("tomtom.searchbox.resultselected", function () {
   // submit.addEventListener("click", function () {
   // getting input from users
-
+  
   console.log("this has been excuted in weather");
   // const city = inputCity.value;
   city = localStorage.getItem("city");
@@ -202,5 +266,13 @@ searchBoxInstance.on("tomtom.searchbox.resultselected", function () {
 
       console.log(city);
       weather(data);
+    
     });
+});
+
+// event listener for close Read more description of the alert
+closeReadMore.addEventListener("click", function(){
+ 
+  readMoreDiv.classList.add("hidden");
+
 });
