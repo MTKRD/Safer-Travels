@@ -78,7 +78,7 @@ function onSearchBoxResult(result) {
   
 }
 
-
+let drawBoundingBoxButtonPressed = false
 function onMouseDown(eventDetails) {
     if (drawBoundingBoxButtonPressed) {
         eventDetails.preventDefault();
