@@ -7,6 +7,7 @@ const tdyWeather = document.querySelector(".tdyDiv");
 const tdyAir = document.querySelector(".airDiv");
 const inputCity = document.querySelector("#city");
 const tdydetail = document.querySelector(".tdy-detail");
+const alertWeather = document.querySelector(".alert")
 // const mapInput = document.querySelector(".tt-search-box-input");
 // varaibles
 const countryCode = "USA";
@@ -107,6 +108,36 @@ function todayWeather(data) {
   const feelLike = document.createElement("h5");
   feelLike.textContent = `Feels Like: ${data.current.feelslike_f}°F`;
   tdyAir.append(feelLike);
+
+  const alertDiv = document.createElement("div");
+  alertDiv.setAttribute("class","p-3");
+  alertWeather.append(alertDiv);
+
+  const event = document.createElement('h4');
+  event.textContent = data.alerts.alert[0].event;
+  alertDiv.append(event);
+
+  let alertDate = dayjs(`${data.alerts.alert[0].effective}`).format("MMM,DD,2024 [at]  HH:mm:ss");
+  const eventDate = document.createElement('h5');
+  eventDate.textContent = `Affective: ${alertDate}`;
+  alertDiv.append(eventDate);
+
+  let alertExpires = dayjs(`${data.alerts.alert[0].expires}`).format("MMM,DD,2024 [at]  HH:mm:ss");
+  const eventExpire = document.createElement('h5');
+  eventExpire.textContent = `Expires: ${alertExpires}`;
+  alertDiv.append(eventExpire);
+
+
+
+  // console.log(data.alerts.alert[0].eDescription);
+  // const eDescription = document.createElement('p');
+  // eDescription.textContent = data.alerts.alert[0].desc;
+  // alertWeather.append(eDescription);
+
+
+
+
+   
 }
 
 // rendring html and its values
