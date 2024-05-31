@@ -6,31 +6,20 @@ const weatherDiv = document.querySelector("#main-weather");
 const tdyWeather = document.querySelector(".tdyDiv");
 const tdyAir = document.querySelector(".airDiv");
 const inputCity = document.querySelector("#city");
-const tdydetail = document.querySelector(".tdy-detail")
+const tdydetail = document.querySelector(".tdy-detail");
 // const mapInput = document.querySelector(".tt-search-box-input");
-// varaibles 
+// varaibles
 const countryCode = "USA";
 const state = "FL";
 const APIKEY = "082d3b4ac7534762a9a13640242405";
 
-//add these values to get an alert
-// const localAdd = document.getElementById("local").value;
-// const destination = document.getElementById("destination").value;
-// const stateWea = document.getElementById("state").value;
-// const cityWea = document.getElementById("city").value;
-
-// const apiUrl =`https://api.openweathermap.org/data/2.5/forecast?q=${city},${state},${countryCode}&appid=appid=${APIKEY}&units=imperial`;
-
-// const cit1 = $("#city").val();
-
-// console.log(city);
 
 function todayWeather(data) {
-  // added div element to hold todays weather 
+  // added div element to hold todays weather
   const tdyMainDiv = document.createElement("div");
   tdyMainDiv.setAttribute("class", " col-8 pt-5 ps-4 ");
   tdyWeather.append(tdyMainDiv);
-//Thomas Smith made the current temp and put color to it when the temp is in cerntain rage 
+  //Thomas Smith made the current temp and put color to it when the temp is in cerntain rage
   const currentHourTemp = document.createElement("h4");
   currentHourTemp.textContent = `Current Temp ${data.current.temp_f}°F`;
   tdyMainDiv.append(currentHourTemp);
@@ -40,17 +29,17 @@ function todayWeather(data) {
     currentHourTemp.style.color = "blue";
     console.log("cold");
   } else if (degree >= 50 && degree <= 79) {
-    currentHourTemp.style.color = "yellow";
+    currentHourTemp.style.color = "orange";
     console.log("warm");
   } else if (degree >= 80 && degree <= 120) {
-    currentHourTemp.style.color ="red"
-    console.log('hot')
-  }else {
+    currentHourTemp.style.color = "red";
+    console.log("hot");
+  } else {
     currentHourTemp.style.color = "black";
-    console.log('death')
+    console.log("death");
   }
 
-   // added the header for city name and append it to the todays weather
+  // added the header for city name and append it to the todays weather
   const citName = document.createElement("h5");
   citName.textContent = `${data.location.name}`;
   tdyMainDiv.append(citName);
@@ -63,16 +52,16 @@ function todayWeather(data) {
     `https:${data.forecast.forecastday[0].day.condition.icon}`
   );
   tdyMainDiv.append(tdyIcon);
-// added the header for sunrise and append it to the todays weather
+  // added the header for sunrise and append it to the todays weather
   const sunrise = document.createElement("h6");
   sunrise.textContent = `Sunrise: ${data.forecast.forecastday[0].astro.sunrise}`;
   tdyMainDiv.append(sunrise);
 
-   // added the header for sunset and append it to the todays weather
+  // added the header for sunset and append it to the todays weather
   const sunset = document.createElement("h6");
   sunset.textContent = `Sunset: ${data.forecast.forecastday[0].astro.sunset}`;
   tdyMainDiv.append(sunset);
-//Thomas Smith add uv with color, the humidiy, wind direction, wind speed, maxTemp, minTemp, and feelsLike
+  //Thomas Smith add uv with color, the humidiy, wind direction, wind speed, maxTemp, minTemp, and feelsLike
   const tdyAir = document.createElement("div");
   tdyAir.setAttribute("class", "airDiv col-3 pt-5 ");
   tdyWeather.append(tdyAir);
@@ -120,12 +109,12 @@ function todayWeather(data) {
   tdyAir.append(feelLike);
 }
 
-// rendring html and its values 
+// rendring html and its values
 function weekWeather(data) {
   for (let i = 1; i < 8; i++) {
-      // main for daily weather
+    // main for daily weather
     const dailyDiv = document.createElement("div");
-     // set the classes 
+    // set the classes
     dailyDiv.setAttribute("class", " daily pt-4  m-3 rounded-circle");
     dailyDiv.setAttribute(
       "style",
@@ -134,24 +123,24 @@ function weekWeather(data) {
     weatherDiv.append(dailyDiv);
 
     const dateHeader = document.createElement("h6");
-    
+
     // formating the date using dayjs and append it
     let date = dayjs(`${data.forecast.forecastday[i].date}`).format("ddd, DD");
     dateHeader.textContent = date;
     dailyDiv.append(dateHeader);
 
-     // heading for temp
+    // heading for temp
     const temp = document.createElement("h6");
     temp.textContent = `${data.forecast.forecastday[i].day.maxtemp_f} °F`;
     dailyDiv.append(temp);
 
-     // heading for condition and append it to daily div
+    // heading for condition and append it to daily div
     const w_condition = document.createElement("h6");
     w_condition.textContent = data.forecast.forecastday[i].day.condition.text;
     console.log(data.forecast.forecastday[i].day.condition.icon);
     dailyDiv.append(w_condition);
 
-     // heading for the icon and append it to daily div
+    // heading for the icon and append it to daily div
     const icon = document.createElement("img");
     icon.setAttribute("class", "img-weather");
     icon.setAttribute(
@@ -175,56 +164,43 @@ function weather(data) {
   weekWeather(data);
 }
 
-
-
-
-
-searchBoxInstance.on("tomtom.searchbox.resultselected", function(){
-// submit.addEventListener("click", function () {
+searchBoxInstance.on("tomtom.searchbox.resultselected", function () {
+  // submit.addEventListener("click", function () {
   // getting input from users
 
-  console.log('this has been excuted in weather');
+  console.log("this has been excuted in weather");
   // const city = inputCity.value;
-  city = localStorage.getItem('city');
+  city = localStorage.getItem("city");
+  let lat = localStorage.getItem("lat");
+  let lon = localStorage.getItem("lon");
 
- 
-  const url = `https://api.weatherapi.com/v1/forecast.json?key=${APIKEY}&q=${city}&days=8&aqi=yes&alerts=yes`;
-  
- // verifying all inputs have been filled up
+  url = `http://api.weatherapi.com/v1/forecast.json?key=082d3b4ac7534762a9a13640242405&q=${lat},${lon}&days=8&aqi=yes&alerts=yes`;
+  // const url = `https://api.weatherapi.com/v1/forecast.json?key=${APIKEY}&q=${city}&days=8&aqi=yes&alerts=yes`;
 
-  // if (
-  //   localAdd.trim() === "" ||
-  //   destination.trim() === "" ||
-  //   stateWea.trim() === "" ||
-  //   cityWea.trim() === ""
-  // ) {
-{
+
+  {
   }
   // fetch data
   fetch(url)
     .then(function (response) {
       // verify the status of response, if 200 return data if not display the correspondon page
 
-      if ( response.status !== 200){
-        if(response.status === 500){
+      if (response.status !== 200) {
+        if (response.status === 500) {
           document.location.replace("assets/pages/500.html");
-        }else{
-
-          console.log("bad request")
-            document.location.replace("assets/pages/error.html");
+        } else {
+          console.log("bad request");
+          document.location.replace("assets/pages/404.html");
         }
-
-      }else{
+      } else {
         return response.json();
       }
-
     })
-    // manuiplate data and call other function with required paramaters and arguments 
+    // manuiplate data and call other function with required paramaters and arguments
     .then(function (data) {
       console.log(data);
 
       console.log(city);
       weather(data);
     });
-
 });
