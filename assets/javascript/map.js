@@ -79,7 +79,8 @@ function onSearchBoxResult(result) {
     localStorage.setItem("lon",lon);
 }
 
-let drawBoundingBoxButtonPressed=false;
+
+let drawBoundingBoxButtonPressed = false;
 
 function onMouseDown(eventDetails) {
     if (drawBoundingBoxButtonPressed) {
