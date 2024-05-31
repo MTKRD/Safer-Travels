@@ -71,13 +71,15 @@ function onSearchBoxResult(result) {
         speed: 3
 
     });
-    let city1 =result.data.result.address.municipality;
-    // console.log('Iam here');
-    console.log(city1);
-    localStorage.setItem("city",city1)
-  
+   
+    let lat = result.data.result.position.lat;
+    let lon= result.data.result.position.lng;
+    
+    localStorage.setItem("lat",lat);
+    localStorage.setItem("lon",lon);
 }
 
+let drawBoundingBoxButtonPressed=false;
 
 function onMouseDown(eventDetails) {
     if (drawBoundingBoxButtonPressed) {
