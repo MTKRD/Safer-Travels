@@ -238,7 +238,7 @@ searchBoxInstance.on("tomtom.searchbox.resultselected", function () {
   let lat = localStorage.getItem("lat");
   let lon = localStorage.getItem("lon");
 
-  url = `http://api.weatherapi.com/v1/forecast.json?key=082d3b4ac7534762a9a13640242405&q=${lat},${lon}&days=8&aqi=yes&alerts=yes`;
+  url = `https://api.weatherapi.com/v1/forecast.json?key=082d3b4ac7534762a9a13640242405&q=${lat},${lon}&days=8&aqi=yes&alerts=yes`;
   // const url = `https://api.weatherapi.com/v1/forecast.json?key=${APIKEY}&q=${city}&days=8&aqi=yes&alerts=yes`;
 
 
