@@ -3,8 +3,7 @@
 # Description
 Introducing `Safer Travels!` a web application that offers a variety of uses to both locals and tourists in 1 convient place. The purpose of this web application is to help you plan your trip or day accordingly by providing up to 7 days worth of weather and updating traffic flows to avoid those busy roads and unnecessary delays.
 
-<!-- make sure to add link to the deployed site -->
-<!-- [name](link) -->
+[Safer Travels!](https://mtkrd.github.io/Safer-Travels/)
 
 ## Table of Contents
 
@@ -19,15 +18,15 @@ Introducing `Safer Travels!` a web application that offers a variety of uses to 
 
 
 ## Visuals
-<!-- ![Screenshot](path to SS  or gif) -->
-<!-- ![Screenshot](path to SS or gif) -->
+ ![Traffic Demo](./assets/images/demo1gif.gif)
+ ![Weather & Modal Demo](./assets/images/demo2gif.gif)
 
 
 ## Usage
-
+To use this application you simply have to type in the location of your choosing into the search bar and then once you've selected it you'll be presented with not only the option to see the current traffic but up to 7 days worth of up to date weather will be presented to you.
 
 ## Roadmap
-Overtime we intend to add highly useful / requested features including:
+Our intention is too provide continued support we intend to do that by adding highly useful / requested features including:
 - Pinpoint location
 - Turn by turn navigation
 - Traffic accident awareness
