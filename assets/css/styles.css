@@ -18,15 +18,13 @@ h2 {
   color: rgb(0, 0, 0);
   font-family: Georgia, "Times New Roman", Times, serif;
 }
-.first-box {
-  border-bottom: 5px dashed black;
-  border-left: 5px dashed black;
-}
+
 footer{
     background-color: rgb(96, 127, 207);
     position: relative;
     text-align: center;
     border: 2px solid black;
+    margin-top: 10%;
    
 } 
 
@@ -68,7 +66,7 @@ label {
 
 #main-weather {
   height: 400px;
-  border-bottom: 5px dashed black;
+ 
   padding-top: 25px;
 }
 .img-weather {
@@ -141,6 +139,7 @@ label {
 }
 
 #modall {
+  
   margin-left: 20px;
   margin-right: 20px;
   background-color: transparent;
