@@ -140,7 +140,9 @@ label {
   border: none;
   color: #000;
   text-decoration: underline;
+  
 }
+
 /* id above class below */
 
 .modal {
@@ -199,5 +201,9 @@ h4 {
   }
   .tdy {
     width: 100%;
+  }
+
+  .daily{
+    width: 800%;
   }
 }
