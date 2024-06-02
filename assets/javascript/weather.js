@@ -194,6 +194,21 @@ function weekWeather(data) {
     const temp = document.createElement("h6");
     temp.textContent = `${data.forecast.forecastday[i].day.maxtemp_f} °F`;
     dailyDiv.append(temp);
+    let degree = data.forecast.forecastday[i].day.maxtemp_f;
+
+    if (degree >= 0 && degree <= 49) {
+      temp.style.color = "blue";
+      console.log("cold");
+    } else if (degree >= 50 && degree <= 79) {
+      temp.style.color = "orange";
+      console.log("warm");
+    } else if (degree >= 80 && degree <= 120) {
+      temp.style.color = "red";
+      console.log("hot");
+    } else {
+      temp.style.color = "black";
+      console.log("death");
+    }
 
     // heading for condition and append it to daily div
     const w_condition = document.createElement("h6");
