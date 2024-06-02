@@ -206,4 +206,8 @@ h4 {
   .daily{
     width: 100%;
   }
+
+  #btnid{
+    width: 95%;;
+  }
 }
