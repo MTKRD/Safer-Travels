@@ -1,7 +1,7 @@
 // https://api.tomtom.com/map/1/tile/basic/main/0/0/0.png?view=Unified&key=xfbbhehRbP7NMrCMLosZ8wBT5eZvEgqa
 //tomtom api with (what should be) an activated key 
 
-// in this part of the code we have our API key and things like how zoomed in it is by default
+// in this part of the code I put my API key and things like how zoomed in it is by default so the map knows what I except 
 const mapInput = document.querySelector(".tt-search-box-input");
 var apiKey = "xfbbhehRbP7NMrCMLosZ8wBT5eZvEgqa";
 var centerCoords = [4.89218, 52.37187];
@@ -13,7 +13,7 @@ var map = tt.map({
     zoom: initialZoom
 });
 
-// here we are declaring variables from how the searches to work to where we know how the user wants to see the traffic flow or not.
+// here I was declaring variables from how the searches to work to where we know how the user wants to see the traffic flow or not.
 var searchBoxInstance;
 var startCornerLngLat;
 var endCornerLngLat;
@@ -29,6 +29,7 @@ var popupHideDelayInMilis = 4000;
 var trafficFlowTilesToggle = document.getElementById("flow-toggle");
 
 
+// giving the var orders to use my api to update what traffic is like and then return a color based off it's finding.
 var trafficFlowTilesTier = new tt.TrafficFlowTilesTier({
     key: apiKey,
     style: styleBase + styleRelative,
@@ -46,7 +47,7 @@ function toggleTrafficFlowTilesTier() {
         map.addTier(trafficFlowTilesTier);
     } else {
         map.removeTier(trafficFlowTilesTier.getId());
-        console.log("i hate traffic");
+        console.log("i hate traffic!");
     }
 }
 
@@ -71,13 +72,16 @@ function onSearchBoxResult(result) {
         speed: 3
 
     });
-    let city1 =result.data.result.address.municipality;
-    console.log('Iam here');
-    console.log(city1);
-    localStorage.setItem("city",city1)
-  
+   
+    let lat = result.data.result.position.lat;
+    let lon= result.data.result.position.lng;
+    
+    localStorage.setItem("lat",lat);
+    localStorage.setItem("lon",lon);
 }
 
+
+let drawBoundingBoxButtonPressed = false;
 
 function onMouseDown(eventDetails) {
     if (drawBoundingBoxButtonPressed) {
@@ -111,7 +115,7 @@ function onMouseDown(eventDetails) {
     }
 }
 
-// these 2 fC's  deal with being able to move the map with your mouse. 
+// these 2 functions deal with being able to move the map with your mouse. 
 function onMouseMove(eventDetails) {
     if (mousePressed) {
         endCornerLngLat = eventDetails.lngLat;
@@ -121,7 +125,7 @@ function onMouseMove(eventDetails) {
 
 function onMouseUp(eventDetails) {
     mousePressed = false;
-    hidePopup(0);
+    // hidePopup(0);
     if (drawBoundingBoxButtonPressed) {
         endCornerLngLat = eventDetails.lngLat;
         if (bothLngLatAreDifferent(startCornerLngLat, endCornerLngLat)) {
@@ -184,7 +188,7 @@ function initApplication() {
     map.on("mouseup", onMouseUp);
     map.on("mousemove", onMouseMove);
     map.on("moveend", updateSearchBoxOptions);
-    console.log("safe travels!");
+    console.log("Safe travels!");
    
         
 }

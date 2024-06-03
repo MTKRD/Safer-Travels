@@ -7,12 +7,30 @@ const tdyWeather = document.querySelector(".tdyDiv");
 const tdyAir = document.querySelector(".airDiv");
 const inputCity = document.querySelector("#city");
 const tdydetail = document.querySelector(".tdy-detail");
+<<<<<<< added-errorexc-updweatherjs
+=======
+const alertWeather = document.querySelector(".alert");
+const readMoreDiv = document.querySelector(".readMore-div")
+const readMore = document.querySelector("read-more-btn");
+const closeReadMore = document.querySelector("#read-more-closebtn");
+>>>>>>> main
 // const mapInput = document.querySelector(".tt-search-box-input");
 // varaibles
 const countryCode = "USA";
 const state = "FL";
 const APIKEY = "082d3b4ac7534762a9a13640242405";
 
+<<<<<<< added-errorexc-updweatherjs
+=======
+// function to generate the description of the alert
+function readMoreAlert(data){
+
+  const eDescription = document.createElement('p');
+  eDescription.textContent = data.alerts.alert[0].desc;
+  readMoreDiv.append(eDescription);
+
+}
+>>>>>>> main
 
 function todayWeather(data) {
   // added div element to hold todays weather
@@ -107,15 +125,71 @@ function todayWeather(data) {
   const feelLike = document.createElement("h5");
   feelLike.textContent = `Feels Like: ${data.current.feelslike_f}°F`;
   tdyAir.append(feelLike);
+
+  let alert = data.alerts.alert.length;
+   console.log(alert);
+   const alertDiv = document.createElement("div");
+    alertDiv.setAttribute("class","py-4 text-center ");
+    alertWeather.append(alertDiv);
+
+   if(alert ===0){
+    const noEvent = document.createElement('h4');
+    noEvent.setAttribute('class',"py-2")
+  noEvent.textContent = "Safe Travel";
+  alertDiv.append(noEvent);
+
+  const noAlert = document.createElement('h4');
+  noAlert.textContent = "There are no alerts reported as of now";
+  alertDiv.append(noAlert);
+
+   }else{
+  
+
+  const event = document.createElement('h4');
+  event.textContent = data.alerts.alert[0].event;
+  alertDiv.append(event);
+
+  let alertDate = dayjs(`${data.alerts.alert[0].effective}`).format(" MMM, DD, 2024 [at]  HH:mm");
+  const eventDate = document.createElement('h5');
+  eventDate.textContent = `Affective: ${alertDate}`;
+  alertDiv.append(eventDate);
+
+  let alertExpires = dayjs(`${data.alerts.alert[0].expires}`).format(" MMM, DD, 2024 [at]  HH:mm");
+  const eventExpire = document.createElement('h5');
+  eventExpire.textContent = `Expires: ${alertExpires}`;
+  alertDiv.append(eventExpire);
+
+  const readMore= document.createElement('button')
+  readMore.setAttribute('id','read-more-btn');
+  readMore.textContent = 'Read more';
+  alertDiv.append(readMore);
+
+
+  readMore.addEventListener("click", function(){
+    readMoreDiv.classList.remove("hidden");
+    readMoreAlert(data);
+   
+  }); 
+
 }
 
+<<<<<<< added-errorexc-updweatherjs
+=======
+
+}
+
+>>>>>>> main
 // rendring html and its values
 function weekWeather(data) {
   for (let i = 1; i < 8; i++) {
     // main for daily weather
     const dailyDiv = document.createElement("div");
     // set the classes
+<<<<<<< added-errorexc-updweatherjs
     dailyDiv.setAttribute("class", " daily pt-4  m-3 rounded-circle");
+=======
+    dailyDiv.setAttribute("class", " daily pt-4  m-3 rounded");
+>>>>>>> main
     dailyDiv.setAttribute(
       "style",
       `background-image: https:${data.forecast.forecastday[i].day.condition.icon}`
@@ -133,6 +207,24 @@ function weekWeather(data) {
     const temp = document.createElement("h6");
     temp.textContent = `${data.forecast.forecastday[i].day.maxtemp_f} °F`;
     dailyDiv.append(temp);
+<<<<<<< added-errorexc-updweatherjs
+=======
+    let degree = data.forecast.forecastday[i].day.maxtemp_f;
+
+    if (degree >= 0 && degree <= 49) {
+      temp.style.color = "blue";
+      console.log("cold");
+    } else if (degree >= 50 && degree <= 79) {
+      temp.style.color = "orange";
+      console.log("warm");
+    } else if (degree >= 80 && degree <= 120) {
+      temp.style.color = "red";
+      console.log("hot");
+    } else {
+      temp.style.color = "black";
+      console.log("death");
+    }
+>>>>>>> main
 
     // heading for condition and append it to daily div
     const w_condition = document.createElement("h6");
@@ -155,6 +247,7 @@ function weekWeather(data) {
 function initial() {
   weatherDiv.textContent = "";
   tdyWeather.textContent = "";
+  alertWeather.textContent="";
 }
 
 // function that calls other function of rendring
@@ -164,17 +257,30 @@ function weather(data) {
   weekWeather(data);
 }
 
+<<<<<<< added-errorexc-updweatherjs
 searchBoxInstance.on("tomtom.searchbox.resultselected", function () {
   // submit.addEventListener("click", function () {
   // getting input from users
 
+=======
+// event listner for resultSelected of the map to generate weather using same data
+
+searchBoxInstance.on("tomtom.searchbox.resultselected", function () {
+  // submit.addEventListener("click", function () {
+  // getting input from users
+  
+>>>>>>> main
   console.log("this has been excuted in weather");
   // const city = inputCity.value;
   city = localStorage.getItem("city");
   let lat = localStorage.getItem("lat");
   let lon = localStorage.getItem("lon");
 
+<<<<<<< added-errorexc-updweatherjs
   url = `http://api.weatherapi.com/v1/forecast.json?key=082d3b4ac7534762a9a13640242405&q=${lat},${lon}&days=8&aqi=yes&alerts=yes`;
+=======
+  url = `https://api.weatherapi.com/v1/forecast.json?key=082d3b4ac7534762a9a13640242405&q=${lat},${lon}&days=8&aqi=yes&alerts=yes`;
+>>>>>>> main
   // const url = `https://api.weatherapi.com/v1/forecast.json?key=${APIKEY}&q=${city}&days=8&aqi=yes&alerts=yes`;
 
 
@@ -190,7 +296,11 @@ searchBoxInstance.on("tomtom.searchbox.resultselected", function () {
           document.location.replace("assets/pages/500.html");
         } else {
           console.log("bad request");
+<<<<<<< added-errorexc-updweatherjs
           document.location.replace("assets/pages/404.html");
+=======
+          document.location.replace("assets/pages/error.html");
+>>>>>>> main
         }
       } else {
         return response.json();
@@ -202,5 +312,16 @@ searchBoxInstance.on("tomtom.searchbox.resultselected", function () {
 
       console.log(city);
       weather(data);
+    
     });
+<<<<<<< added-errorexc-updweatherjs
+=======
+});
+
+// event listener for close Read more description of the alert
+closeReadMore.addEventListener("click", function(){
+ 
+  readMoreDiv.classList.add("hidden");
+
+>>>>>>> main
 });
