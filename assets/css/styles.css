@@ -1,16 +1,14 @@
-body{
-margin:80px;
+body {
+  margin: 80px;
 }
 
 header {
   /* position: relative; */
   text-align: center;
-  margin:20px;
- background-color: skyblue;
-  background-repeat:repeat;
+  margin: 20px;
+  background-color: skyblue;
+  background-repeat: repeat;
   background-size: cover;
-
-
 }
 
 h1,
@@ -19,14 +17,15 @@ h2 {
   font-family: Georgia, "Times New Roman", Times, serif;
 }
 
-footer{
-    background-color: rgb(96, 127, 207);
-    position: relative;
-    text-align: center;
-    border: 2px solid black;
-    margin-top: 10%;
-   
-} 
+footer {
+  background-color: rgb(96, 127, 207);
+  position: relative;
+  text-align: center;
+  border: 2px solid black;
+  margin-top: auto;
+  margin-bottom: 20px;
+  bottom: 0px;
+}
 
 input {
   border: 3px solid black;
@@ -49,7 +48,7 @@ input {
   color: black;
 }
 
-.alert{
+.alert {
   display: block;
   height: 350px;
 }
@@ -65,58 +64,56 @@ label {
 }
 
 #main-weather {
-  height: 400px;
- 
+  min-height: 400px;
+
   padding-top: 25px;
 }
 .img-weather {
-
   height: 100px;
   width: 100px;
 
   border-radius: 50px;
   text-align: center;
 }
-.tdyDiv{
+.tdyDiv {
   text-align: center;
   /* border : 2px solid white; */
   border-radius: 20px;
   /* box-shadow: 6px -6px 6px lightblue; */
   /* background-color: rgb(61, 54, 54); */
   color: black;
-
 }
-.daily{
+.daily {
   text-align: center;
-  border : 2px solid white;
-  box-shadow: 3px 3px  2px 2px rgb(110, 113, 114);
+  border: 2px solid white;
+  box-shadow: 3px 3px 2px 2px rgb(110, 113, 114);
   background-color: rgb(44, 117, 165);
   color: white;
   width: 170px;
   height: 230px;
 }
 
-.readMore-div{
+.readMore-div {
   /* display: none; */
   justify-content: center;
   position: absolute;
   left: 400px;
-  top:600px;
+  top: 600px;
   width: 60%;
   background-color: white;
   border-radius: 25px;
   box-shadow: 6px 6px;
-  padding:30px;
+  padding: 30px;
   font-size: 20px;
   z-index: 5;
 }
 
-.hidden{
+.hidden {
   display: none;
 }
 
-#read-more-btn{
-  border:none;
+#read-more-btn {
+  border: none;
   color: blue;
   margin-top: 20px;
 }
@@ -125,64 +122,92 @@ label {
   font-size: 20px;
 }
 
-
-#read-more-closebtn{
+#read-more-closebtn {
   background-color: white;
   color: red;
-  border:none;
+  border: none;
   font-size: 30px;
 }
-
 
 #read-more-closebtn:hover {
   font-size: 40px;
 }
 
 #modall {
-  
   margin-left: 20px;
   margin-right: 20px;
   background-color: transparent;
   border: none;
   color: #000;
   text-decoration: underline;
-  }
-  /* id above class below */
   
-  .modal {
-    display: none;
-    position: fixed;
-    /* z-index: 1; */
-    top:50% ;
-    left:50%;
-    transform: translate(-50%, -50%);
-    height: 70%;
-    width: 35%;
+}
+
+/* id above class below */
+
+.modal {
+  display: none;
+  position: fixed;
+  /* z-index: 1; */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 70%;
+  width: 35%;
   overflow: auto;
-  background-color: lemonchiffon; 
-   border: 1px solid black;
-  
+  background-color: lemonchiffon;
+  border: 1px solid black;
+}
+
+.modal-content {
+  background-color: white;
+  margin: 1% auto;
+  padding: 20px;
+  width: 75%; /*I might edit this before pushing.  */
+  font-size: small;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  padding-right: 10px;
+  font-size: 30px; /*make sure this isnt too big before pushing.  */
+  font-weight: bold;
+}
+
+h4 {
+  color: black;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 992px) {
+  body {
+    margin: 10px;
   }
-  
-  .modal-content{
-    background-color: white;
-    margin: 1% auto;
-    padding: 20px;
-   width: 75%; /*I might edit this before pushing.  */
-   font-size: small;
-  }
-  
-  .close {
-    color: #aaa;
-    float: right;
-    padding-right: 10px;
-    font-size:30px; /*make sure this isnt too big before pushing.  */
-    font-weight: bold;
+  header {
+    margin: auto;
   }
 
-  h4 {
-    color: black;
-    font-weight: bold;
-    text-decoration: underline;
+  .alert {
+    width: 100%;
+  }
+  .tdyDiv {
+    width: 100%;
+    justify-content: center;
+  }
+  .airDiv {
+    width: 100%;
+  }
+  .tdy {
+    width: 100%;
   }
 
+  .daily{
+    width: 100%;
+  }
+
+  #btnid{
+    width: 95%;;
+  }
+}
